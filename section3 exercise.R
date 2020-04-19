@@ -8,7 +8,7 @@ profit <- revenue - expenses
 profit
 
 #Calculate Tax As 30% Of Profit And Round To 2 Decimal Points
-tax <- round(0.30 * profit, 2)
+tax <- round(0.30 * profit, 2)   # round(0.3 *profit, digits=2)
 tax 
 
 #Calculate Profit Remaining After Tax Is Deducted
@@ -18,7 +18,7 @@ profit.after.tax
 #Calculate The Profit Margin As Profit After Tax Over Revenue
 #Divide gross profit by the revenue.
 #Round To 2 Decimal Points, Then Multiply By 100 To Get %
-profit.margin <- round(profit.after.tax/revenue, 2) * 100
+profit.margin <- round(profit.after.tax / revenue, 2) * 100
 profit.margin
 
 #Calculate The Mean Profit After Tax For The 12 Months
@@ -42,7 +42,7 @@ worst.month <- profit.after.tax == min(profit.after.tax)
 worst.month
 
 #Convert All Calculations To Units Of One Thousand Dollars
-revenue.1000 <- round(revenue / 1000, 0)
+revenue.1000 <- round(revenue / 1000, 0)  # Can omit 0 since the default value is 0 anyway.
 expenses.1000 <- round(expenses / 1000, 0)
 profit.1000 <- round(profit / 1000, 0)
 profit.after.tax.1000 <- round(profit.after.tax / 1000, 0)
