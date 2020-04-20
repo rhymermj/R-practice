@@ -1,3 +1,8 @@
+#############################################################
+# A data frame can store a mix of value types,              #
+# where a matrix can only store elements of the same type.  #
+#############################################################
+
 # Importing data into R -------------------------------------------------
 
 ?read.csv()
