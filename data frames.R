@@ -105,3 +105,41 @@ qplot(data = stats, x=Internet.users, y=Birth.rate, size=I(3))
 qplot(data = stats, x=Internet.users, y=Birth.rate, size=I(3), colour=I("red"))
 qplot(data = stats, x=Internet.users, y=Birth.rate, colour=Income.Group, size=I(2))
 # Analysis: higher income group has higher internet usage and lower birth rate.
+
+
+# Creating Data Frames --------------------------------------------------
+# Use data.frame() function and pass the vectors
+mydf <- data.frame(Countries_2012_Dataset, Codes_2012_Dataset, Regions_2012_Dataset)
+head(mydf)
+#colnames(mydf) <- c("Country", "Code", "Region")
+#head(mydf)
+rm(mydf)
+
+mydf <- data.frame(Country=Countries_2012_Dataset, Code=Codes_2012_Dataset, Region=Regions_2012_Dataset)
+head(mydf)
+tail(mydf)
+summary(mydf)
+
+
+# Merging Data Frames ---------------------------------------------------
+head(stats)
+head(mydf)
+
+merged <- merge(stats, mydf, by.x = "Country.Code", by.y = "Code")
+head(merged)
+
+merged$Country <- NULL
+str(merged)
+tail(merged)
+
+
+# Visualizing with new Split -------------------------------------------
+qplot(data = merged, x=Internet.users, y=Birth.rate)
+qplot(data = merged, x=Internet.users, y=Birth.rate, colour=Region)
+
+# 1.Shapes
+qplot(data = merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), shape=I(18))
+# 2. Transparency
+qplot(data = merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), shape=I(19), alpha=I(0.6))
+# 3. Title
+qplot(data = merged, x=Internet.users, y=Birth.rate, colour=Region, size=I(2), shape=I(19), alpha=I(0.6), main = "Birth Rate vs Internet Users")
