@@ -20,7 +20,7 @@ stats <- read.csv("Demographic-Data.csv")
 stats
 
 
-# Exploring dataset -----------------------------------------------------
+# Exploring datasets: head(), tail(), summary(), str() -----------------
 stats
 nrow(stats)
 ncol(stats)
@@ -31,7 +31,7 @@ str(stats)       # display structure of the data frame
 summary(stats)   # breakdown for each columns
 
 
-# Using the $ sign: Another way to access data a the data frame --------
+# Using the $ sign: Another way to access data a the data frame ---------
 # Does not work for matrices but does work for data frame
 stats
 head(stats)
@@ -79,6 +79,7 @@ head(stats)
 
 
 # Filtering data frames (working with "rows") ---------------------------
+# Create a logical variable and use it to filter out the rows.
 head(stats)
 filter <- stats$Internet.users < 2
 stats[filter,]    # Display when the filter is true
@@ -91,7 +92,7 @@ stats[stats$Country.Name == "Malta",]
 
 
 # Introduction to qplot() -----------------------------------------------
-library("ggplot2")
+library("ggplot2")    # Activate qplot
 ?qplot()
 qplot(data = stats, x=Internet.users)
 qplot(data = stats, x=Income.Group, y=Birth.rate)
@@ -107,7 +108,7 @@ qplot(data = stats, x=Internet.users, y=Birth.rate, colour=Income.Group, size=I(
 # Analysis: higher income group has higher internet usage and lower birth rate.
 
 
-# Creating Data Frames --------------------------------------------------
+# Creating/building Data Frames: data.frame() ---------------------------
 # Use data.frame() function and pass the vectors
 mydf <- data.frame(Countries_2012_Dataset, Codes_2012_Dataset, Regions_2012_Dataset)
 head(mydf)
