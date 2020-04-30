@@ -49,6 +49,16 @@ levels(housing.df[,14]) # It can take one of three levels
 class(housing.df$BEDROOMS) # BEDROOMS is an integer variable
 class(housing.df[,1]) # TOTAL_VALUE is a numeric variable
 
+# Create Dummies: use dummies package to 'decompose' categorical
+#                 variables (REMODEL in this dataset) into binary variables
+#                 (called dummies). This is a required pre-processing step 
+#                 for some DM algorithms.
+install.packages("dummies")
+library(dummies)
+housing.df <- dummy.data.frame(housing.df, sep = ".")
+names(housing.df)
+head(housing.df)
+
 # To illustrate missing data procedures, we first convert a few entries for bedrooms 
 # to NA's. Then we input these missing values using the median of the remaining values.
 rows.to.missing <- sample(row.names(housing.df), 10)
